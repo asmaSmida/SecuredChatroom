@@ -18,3 +18,8 @@ This app provides tools for various security needs such as:
   - Hashing messages with MD5, SHA-1 or SHA256
   - Symetric ciphering of messages with DES or AES256
   - Assymetric ciphering of messages with RSA or ElGamal
+  ## Demo Video
+
+
+https://user-images.githubusercontent.com/80569527/213578114-49af6c0b-e29a-45b3-b531-0a6b359244f1.mp4
+
