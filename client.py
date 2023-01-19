@@ -20,13 +20,13 @@ class Client(Frame):
         self.username = username
         self.isStopped = False
         self.root = root
-        lbl = Label(root, text = "Welcome to your private chatroom"+self.username)
-        lbl.pack()
+        lbl = Label(root, text = "Welcome to your private chatroom  "+self.username,bg="#E4F6F8", font=("Robotto",14))
+        lbl.pack(ipady=10)
 
 
 
         
-        self.notebook = ttk.Notebook(self.master)
+        self.notebook = ttk.Notebook(self.root)
         self.container = Frame(self.notebook, bd=0)
         self.container.pack(expand=True, fill=BOTH)
         
@@ -44,10 +44,10 @@ class Client(Frame):
         self.users_frame = Frame(self.upperFrame, bd=0)
         self.users_frame.pack(fill=BOTH, side=LEFT)
         
-
+        
         # contains messages
         self.text_box = Text(self.text_frame, yscrollcommand=self.text_box_scrollbar.set, state=DISABLED,
-                             bd=1, padx=6, pady=6, spacing3=8, wrap=WORD, bg=None, font="Verdana 10", relief=GROOVE,
+                             bd=1, padx=6, pady=6, spacing3=8, wrap=WORD, bg=None, font = ("Robotto", 12), relief=GROOVE,
                              width=10, height=1)
         self.text_box.pack(expand=True, fill=BOTH)
         self.text_box_scrollbar.config(command=self.text_box.yview)
@@ -57,18 +57,18 @@ class Client(Frame):
         self.entry_frame.pack(side=BOTTOM, fill=X, expand=False)
 
         # entry field
-        self.entry_field = Entry(self.entry_frame, bd=0, justify=LEFT)
-        self.entry_field.pack(fill=X, padx=6, pady=6, ipady=3)
+        self.entry_field = Entry(self.entry_frame, bd=0, justify=LEFT,bg="#D3DFDF",relief="solid",font = ("Robotto", 13))
+        self.entry_field.pack(fill=X, ipady=10)
         self.entry_field.focus()
-        # self.users_message = self.entry_field.get()
-        
+       #style the button
+        # Create style Object
+              
         # frame containing send button and emoji button
         self.send_button_frame = Frame(self.entry_frame, bd=0)
         self.send_button_frame.pack(fill=BOTH)
-        self.send_button = Button(self.send_button_frame, text="Send", width=5, relief=GROOVE, bg='white',
-                                  bd=1, command= self.input_handler, activebackground="#FFFFFF",
-                                  activeforeground="#000000")
-        self.send_button.pack(side=LEFT, ipady=2)
+        self.send_button = Button(self.send_button_frame, text="Send",justify="center",
+                                  bd=1, command= self.input_handler, font =('calibri', 15, 'bold'),borderwidth = '4',width=12,bg="#0695FE")
+        self.send_button.pack(side=TOP, ipady=3,pady=11)
 
     def create_connection(self):
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -189,10 +189,11 @@ class Client(Frame):
 def initialize_and_start_client(username):
    
     root = Tk()
-    root.title("Talky Walky")
+    root.title("Chatty Room")
     default_window_size = "600x500"
     root.geometry(default_window_size)
     root.minsize(360, 200)
+    root.configure(bg="#E4F6F8")
 
         # start application
     
